@@ -21,3 +21,6 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 # Appendix
 ## Dependancies
 * [Vite development guide](https://vitejs.dev/guide/)
+
+## Development
+* for Recipe Feature,  serve locally the recipe folder with cors policy enable `serve . --cors=*`
