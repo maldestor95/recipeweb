@@ -1,9 +1,8 @@
 <template>
-  <!-- workaround when computed recipe is not calculated-->
-  <div v-if="recipe.metaData">
-    <h1>{{ title }}</h1>
+  <div v-if="recipe.title != 'nodisplay'">
+    <h1>{{ recipe.title }}</h1>
 
-    <div v-for="ing in ingredients" :key="ing.ingredient" class="grid grid-cols-2">
+    <div v-for="ing in recipe.ingredients" :key="ing.ingredient" class="grid grid-cols-2">
       <div class="capitalize">{{ ing.ingredient }}</div>
       <div>{{ ing.qty }}</div>
     </div>
@@ -15,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import vuemarkdownit from "../../components/vuemarkdownit.vue";
 import metaData from "./methods.ts";
 
@@ -25,11 +24,6 @@ export interface Props {
   msg?: string;
   labels?: string[];
 }
-const recipeMetaData = ref({
-  title: "test",
-  link: "testlink",
-  ingredients: [{ ingredient: "1st ing", qty: "12" }],
-});
 const dummyRecipe = `
 ---
 title: Gauffres
@@ -38,21 +32,11 @@ link:  gauffres.md
 ingredients:
 - ingredient: Farine
   qty: 500g
-- ingredient: Oeufs
-  qty: 5
-- ingredient: Sucre vanillé
-  qty: 1 sachet
-- ingredient: Lait
-  qty: 650ml
-- ingredient: Carré de levure
-  qty: 1
 - ingredient: Beurre
   qty: 200g
 ...
-Préparer levure
-
+# Steps dummy recipe
 Fondre le beurre
-
 Mélanger et laisser monter
 `;
 const props = defineProps({
@@ -60,7 +44,28 @@ const props = defineProps({
   recipeDetails: { type: String, default: () => dummyRecipe },
 });
 
-const recipe = computed(() => {
+const recipe = ref({
+  title: "nodisplay",
+  link: "string",
+  ingredients: [{ ingredient: "string", qty: "string" }],
+  process: "process",
+});
+
+onMounted(() => {
+  recipe.value.process = metaData.extractProcess(props.recipeDetails);
+});
+
+watch(
+  () => props.recipeDetails,
+  (newElt) => {
+    // console.log(newElt);
+    recipe.value.process = metaData.extractProcess(newElt);
+    recipe.value.ingredients = metaData.extractMetaData(newElt).ingredients;
+    recipe.value.title = metaData.extractMetaData(newElt).title;
+  }
+);
+
+/*const recipeComputed = computed(() => {
   const defaultRes = {
     metaData: {
       title: "string",
@@ -82,7 +87,7 @@ const ingredients = computed(() => {
   if (props.recipeDetails) {
     return metaData.extractMetaData(props.recipeDetails).ingredients;
   } else return defaultRes;
-});
+});*/
 </script>
 
 <style scoped></style>
