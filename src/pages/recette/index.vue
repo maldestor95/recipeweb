@@ -7,7 +7,7 @@
     <recipeView
       :title="recipechosen"
       :recipeDetails="recipeDetails"
-      class="container bg-slate-400"
+      class=""
     ></recipeView>
   </div>
 </template>
