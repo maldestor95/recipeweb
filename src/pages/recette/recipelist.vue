@@ -10,7 +10,7 @@
     <div
       v-for="item in recipeListFiltered"
       :key="item.title"
-      class="cursor-pointer"
+      class="cursor-pointer text-left hover:bg-blue-400"
       @click="$emit('choice', item.title)"
     >
       {{ item.title }}
@@ -28,6 +28,7 @@ const props = defineProps({
 });
 
 const recipeListFiltered = computed(() => {
+  // return [{ title: 13 }, { title: "aaa" }];
   return props.recipeList.filter((rl) =>
     rl.title.toUpperCase().includes(recipeSelection.value.toUpperCase())
   );

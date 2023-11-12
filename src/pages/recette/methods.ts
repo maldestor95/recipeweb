@@ -26,7 +26,6 @@ const fetchList = async (): Promise<recipeListType> => {
 const fetchRecipe = async (link: string): Promise<string> => {
 
     const url = `${constants.RecipePath()}/${link}`;
-    console.log(url)
     const myHeaders = new Headers();
     const myInit: Partial<RequestInit> = {
         method: 'GET',

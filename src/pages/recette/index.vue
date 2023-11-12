@@ -18,7 +18,7 @@ import methods from "./methods";
 import recipeListForm from "./recipelist.vue";
 import recipeView from "./recipeview.vue";
 
-const recipeList = ref([{ title: "test", link: "linktest" }]);
+const recipeList = ref([{ title: "testa", link: "linktest" }]);
 const recipechosen = ref("sample recipe chosen");
 const recipeDetails = ref(`# sample details`);
 
