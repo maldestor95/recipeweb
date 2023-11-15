@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-// TODO inspired by https://github.com/JanGuillermo/vue3-markdown-it/blob/master/src/vue-markdown-it.js
+// ref inspired by https://github.com/JanGuillermo/vue3-markdown-it/blob/master/src/vue-markdown-it.js
 import { defineComponent } from "vue";
 import { h, onMounted, onUpdated, ref } from "vue";
 import MarkdownIt from "markdown-it";
