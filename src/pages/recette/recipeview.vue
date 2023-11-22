@@ -1,11 +1,20 @@
 <template>
-  <div v-if="recipe.title != 'nodisplay'">
-    <h1>{{ recipe.title }}</h1>
-
-    <div v-for="ing in recipe.ingredients" :key="ing.ingredient" class="grid grid-cols-2">
-      <div class="capitalize">{{ ing.ingredient }}</div>
-      <div>{{ ing.qty }}</div>
+  <div v-if="recipe.title != 'nodisplay'" class="lg:rounded-2xl lg:mt-6 lg:bg-yellow-200">
+    <div class="flex">
+      <div class="basis-1/12"></div>
+      <h1>{{ recipe.title }}</h1>
     </div>
+
+    <div class="h-3"></div>
+
+    <ul v-for="ing in recipe.ingredients" :key="ing.ingredient">
+      <li class="grid grid-cols-2">
+        <div class="capitalize text-left">{{ ing.ingredient }}</div>
+        <div class="text-left">{{ ing.qty }}</div>
+      </li>
+    </ul>
+
+    <div class="h-3"></div>
 
     <div class="text-start">
       <vuemarkdownit :source="recipe.process"></vuemarkdownit>
@@ -64,30 +73,6 @@ watch(
     recipe.value.title = metaData.extractMetaData(newElt).title;
   }
 );
-
-/*const recipeComputed = computed(() => {
-  const defaultRes = {
-    metaData: {
-      title: "string",
-      link: "string",
-      ingredients: [{ ingredient: "string", qty: "string" }],
-    },
-    process: "",
-  };
-  if (props.recipeDetails)
-    return {
-      metaData: metaData.extractMetaData(props.recipeDetails),
-      process: metaData.extractProcess(props.recipeDetails),
-    };
-  else return defaultRes;
-});
-
-const ingredients = computed(() => {
-  const defaultRes = [{ ingredient: "string", qty: "string" }];
-  if (props.recipeDetails) {
-    return metaData.extractMetaData(props.recipeDetails).ingredients;
-  } else return defaultRes;
-});*/
 </script>
 
 <style scoped></style>
