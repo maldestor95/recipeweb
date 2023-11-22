@@ -1,7 +1,7 @@
 <template>
   <div class="bg-red-100 container absolute top-0">
     <div @click="hidemenu = !hidemenu" class="absolute left-0 top-1 w-8 h-8 p-0">
-      <svg
+      <!-- <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 30 24"
@@ -14,8 +14,8 @@
           stroke-linejoin="round"
           d="M4 4h22M4 12h22M4 20h22"
         />
-        <!-- d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" -->
-      </svg>
+      </svg> -->
+      <img src="/public/logo.svg" />
     </div>
     <recipeListForm
       class="mt-1"
