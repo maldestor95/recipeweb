@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-red-100 container absolute top-0">
+  <div class="container mx-auto">
     <div @click="hidemenu = !hidemenu" class="absolute left-0 top-1 w-8 h-8 p-0">
       <!-- <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@
       <img src="/public/logo.svg" />
     </div>
     <recipeListForm
-      class="mt-1"
+      class="mt-1 px-2"
       v-if="hidemenu == false"
       :recipe-list="recipeList"
       @choice="
@@ -31,7 +31,7 @@
     <recipeView
       :title="recipechosen"
       :recipeDetails="recipeDetails"
-      class=""
+      class="mx-auto px-2"
     ></recipeView>
   </div>
 </template>

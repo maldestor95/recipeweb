@@ -1,20 +1,23 @@
 <template>
   <div>
-    <div>
+    <div class="flex">
+      <div class="basis-1/12"></div>
       <input
         v-model="recipeSelection"
         type="text"
-        class="border-2 border-blue-400 rounded-lg px-1"
+        class="border-2 border-blue-400 rounded-lg basis-10/12"
       />
     </div>
-    <div
+    <ul
       v-for="item in recipeListFiltered"
       :key="item.title"
       class="cursor-pointer text-left hover:bg-blue-400"
       @click="$emit('choice', item.title)"
     >
-      {{ item.title }}
-    </div>
+      <li>
+        {{ item.title }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -35,4 +38,9 @@ const recipeListFiltered = computed(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+li:before {
+  content: "\00BB";
+  margin-right: 6px;
+}
+</style>
