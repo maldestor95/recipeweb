@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div class="flex">
-      <div class="basis-1/12"></div>
+    <div class="flex pb-4 pt-6">
+      <div class="basis-3/12"></div>
       <input
-        v-model="recipeSelection"
-        type="text"
-        class="border-2 border-blue-400 rounded-lg basis-10/12"
+      v-model="recipeSelection"
+      type="text"
+      class="border-2 border-blue-400 rounded-lg basis-10/12"
       />
+      <div class="basis-3/12"></div>
     </div>
     <ul
       v-for="item in recipeListFiltered"
@@ -31,7 +32,6 @@ const props = defineProps({
 });
 
 const recipeListFiltered = computed(() => {
-  // return [{ title: 13 }, { title: "aaa" }];
   return props.recipeList.filter((rl) =>
     rl.title.toUpperCase().includes(recipeSelection.value.toUpperCase())
   );
