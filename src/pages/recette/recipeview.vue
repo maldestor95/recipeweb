@@ -1,12 +1,12 @@
 <template>
-  <div v-if="recipe.title != 'nodisplay'" class="lg:rounded-2xl lg:mt-6 lg:bg-yellow-200">
-    <div class="flex">
-      <div class="basis-1/12"></div>
-      <h1>{{ recipe.title }}</h1>
+  <div v-if="recipe.title != 'nodisplay'" class="lg:rounded-xl lg:mt-6 lg:shadow-2xl">
+    <div class="flex ">
+      <div class="basis-3/12"></div>
+      <h2>{{ recipe.title }}</h2>
     </div>
 
-    <div class="h-3"></div>
-
+    <div class="h-10"></div>
+    
     <ul v-for="ing in recipe.ingredients" :key="ing.ingredient">
       <li class="grid grid-cols-2">
         <div class="capitalize text-left">{{ ing.ingredient }}</div>
@@ -14,7 +14,7 @@
       </li>
     </ul>
 
-    <div class="h-3"></div>
+    <div class="h-10"></div>
 
     <div class="text-start">
       <vuemarkdownit :source="recipe.process"></vuemarkdownit>
@@ -67,7 +67,6 @@ onMounted(() => {
 watch(
   () => props.recipeDetails,
   (newElt) => {
-    // console.log(newElt);
     recipe.value.process = metaData.extractProcess(newElt);
     recipe.value.ingredients = metaData.extractMetaData(newElt).ingredients;
     recipe.value.title = metaData.extractMetaData(newElt).title;
@@ -75,4 +74,3 @@ watch(
 );
 </script>
 
-<style scoped></style>
