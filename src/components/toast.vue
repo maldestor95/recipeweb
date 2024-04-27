@@ -26,10 +26,9 @@ watch(showToast,async(newValue)=>{
     const delay= Number(props.timeoutInSeconds)*1000
 
     setTimeout(function(){
-          console.log("timer finished, disable toast");
           showToast.value=false
     }, delay);
-    console.log(showToast.value)}
+  }
 })
 </script>
 
