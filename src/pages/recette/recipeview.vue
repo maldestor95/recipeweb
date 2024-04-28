@@ -1,8 +1,8 @@
 <template>
   <div v-if="recipe.title != 'nodisplay'" class="lg:rounded-xl lg:mt-6 lg:shadow-2xl">
     <div class="flex ">
-      <div class="basis-3/12"></div>
-      <h2>{{ recipe.title }}</h2>
+      <div class="basis-2/12"></div>
+      <h2 class="basis-10/12">{{ recipe.title }}</h2>
     </div>
 
     <div class="h-10"></div>
