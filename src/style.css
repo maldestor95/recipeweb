@@ -28,9 +28,8 @@ a:hover {
 }
 
 
-.debug {
+.debug , .debugall>* {
   @apply border-red-500 border-solid border-2
-
 }
 
 h1 {

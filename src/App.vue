@@ -1,9 +1,12 @@
 <script setup lang="ts">
+
 import Recipe from "./pages/recette/index.vue";
+
 </script>
 
 <template>
   <Recipe></Recipe>
+
 </template>
 
 <style scoped>

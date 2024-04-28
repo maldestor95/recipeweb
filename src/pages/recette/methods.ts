@@ -23,7 +23,7 @@ const fetchList = async (): Promise<recipeListType> => {
 
     return YAML.parse(await query.text())
 }
-const fetchRecipe = async (link: string): Promise<string> => {
+const fetchRecipe = async (link: string): Promise<{ content: string, status: number }> => {
 
     const url = `${constants.RecipePath()}/${link}`;
     const myHeaders = new Headers();
@@ -35,8 +35,9 @@ const fetchRecipe = async (link: string): Promise<string> => {
     };
 
     const query = await fetch(url, myInit)
+    const contentRaw = await query.text()
 
-    return await query.text()
+    return { content: contentRaw, status: query.status }
 }
 function extractMetaData(recipe: string): metaData {
     const endYamlPosition = recipe.indexOf("...");

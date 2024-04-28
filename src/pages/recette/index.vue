@@ -32,7 +32,7 @@
       v-if="menu == 'choice'"
       :recipe-list="recipeList"
       @choice="
-        (e) => {
+        (e:string) => {
           changerecipe(e);
           menu = 'chosen';
         }
@@ -73,7 +73,7 @@ async function changerecipe(recipeTitle: string) {
   const link = recipeList.value.filter(
     (rr) => rr.title.toUpperCase() == recipeTitle.toUpperCase()
   )[0].link;
-  recipeDetails.value = await methods.fetchRecipe(link);
+  recipeDetails.value = (await methods.fetchRecipe(link)).content;
 }
 </script>
 
