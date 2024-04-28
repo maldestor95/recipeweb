@@ -32,7 +32,7 @@
       v-if="menu == 'choice'"
       :recipe-list="recipeList"
       @choice="
-        (e) => {
+        (e:string) => {
           changerecipe(e);
           menu = 'chosen';
         }

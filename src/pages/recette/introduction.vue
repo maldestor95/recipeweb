@@ -1,6 +1,6 @@
 <template>
   <div class="container px-2">
-    <h1 class="ml-10 debug">Carnet de recettes</h1>
+    <h1 class="ml-10 ">Carnet de recettes</h1>
 
     <p class="text-justify mt-2">
       Ici vous êtes bien loin d'une ambition d'avoir un recueil exhaustif de recettes, de
