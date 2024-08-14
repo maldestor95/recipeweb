@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div class="flex pb-4 pt-6">
       <div class="basis-3/12"></div>
       <input
@@ -23,8 +24,9 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, computed, ref } from "vue";
+import { PropType, computed, ref, watch } from "vue";
 import { recipeListType } from "./methods";
+
 const recipeSelection = ref("");
 
 const props = defineProps({
@@ -36,6 +38,9 @@ const recipeListFiltered = computed(() => {
     rl.title.toUpperCase().includes(recipeSelection.value.toUpperCase())
   );
 });
+
+
+
 </script>
 
 <style scoped>
