@@ -1,9 +1,8 @@
 <template>
   <div class="container mx-auto relative">
-    {{ ctrlK }}
     <div class="pt-1">    <!--icons-->
-      <div @click="menu = 'choice'" class="absolute left-0 top-1 p-0">
-        <img src="/public/logo.svg" alt="website logo" class="h-16" />
+      <div @click="menu = 'choice'" id='menuBtn' class="absolute left-0 top-1 p-0">
+        <img src="/logo.svg" alt="website logo" class="h-16" />
       </div>
 
       <div
@@ -51,13 +50,11 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref} from "vue";
 import methods from "./methods";
 import recipeListForm from "./recipelist.vue";
 import recipeView from "./recipeview.vue";
 import introduction from "./introduction.vue";
-import { ctrlKey } from "../../composable/ctrlk";
-
 
 const recipeList = ref([{ title: "testa", link: "linktest" }]);
 const recipechosen = ref("sample recipe chosen");
@@ -67,6 +64,7 @@ const menu = ref("introduction");
 onMounted(async () => {
   recipeList.value = await methods.fetchList();
 });
+
 
 async function changerecipe(recipeTitle: string) {
   recipechosen.value = recipeList.value.filter(
@@ -78,9 +76,5 @@ async function changerecipe(recipeTitle: string) {
   recipeDetails.value = (await methods.fetchRecipe(link)).content;
 }
 
-const ctrlK=ctrlKey()
-watch (ctrlK,(ev)=>{
-  console.log(`ettt ${ev.ctrlKey}`)
-})
 </script>
 
