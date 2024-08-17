@@ -38,10 +38,11 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import vuemarkdownit from "../../components/vuemarkdownit.vue";
 import metaData from "./methods.ts";
 import toast from "../../components/toast.vue"
+import ctrlK_Pressed from "../../helpers/ctrlk"
 
 
 export interface Props {
@@ -77,10 +78,27 @@ const recipe = ref({
   process: "process",
 });
 const showToast= ref(false)
+
+
+const ctrlKListener=(ev:KeyboardEvent)=>{
+    ctrlK_Pressed(ev,(message:string)=>{
+      switch (message) {
+        case 'ctrl+K':
+            document.getElementById('menuBtn')?.click()
+          break;
+        default:
+          break;
+      }
+  })
+}
 onMounted(() => {
   recipe.value.process = metaData.extractProcess(props.recipeDetails);
+  window.addEventListener('keydown',ctrlKListener)
 });
 
+onUnmounted(()=>{
+  window.removeEventListener('keydown',ctrlKListener)
+})
 watch(
   () => props.recipeDetails,
   (newElt) => {
@@ -94,5 +112,7 @@ const copyToClipboard= ()=>{
   const ingredientsForRecipe=recipe.value.ingredients.map(k=>{return `${k.ingredient}\t${k.qty}`}).join('\n')
  navigator.clipboard.writeText(ingredientsForRecipe)
 }
+
+
 </script>
 

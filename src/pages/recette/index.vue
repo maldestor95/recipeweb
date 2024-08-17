@@ -1,9 +1,8 @@
 <template>
   <div class="container mx-auto relative">
-
     <div class="pt-1">    <!--icons-->
-      <div @click="menu = 'choice'" class="absolute left-0 top-1 p-0">
-        <img src="/public/logo.svg" alt="website logo" class="h-16" />
+      <div @click="menu = 'choice'" id='menuBtn' class="absolute left-0 top-1 p-0">
+        <img src="/logo.svg" alt="website logo" class="h-16" />
       </div>
 
       <div
@@ -51,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref} from "vue";
 import methods from "./methods";
 import recipeListForm from "./recipelist.vue";
 import recipeView from "./recipeview.vue";
@@ -66,6 +65,7 @@ onMounted(async () => {
   recipeList.value = await methods.fetchList();
 });
 
+
 async function changerecipe(recipeTitle: string) {
   recipechosen.value = recipeList.value.filter(
     (rr) => rr.title.toUpperCase() == recipeTitle.toUpperCase()
@@ -75,5 +75,6 @@ async function changerecipe(recipeTitle: string) {
   )[0].link;
   recipeDetails.value = (await methods.fetchRecipe(link)).content;
 }
+
 </script>
 
