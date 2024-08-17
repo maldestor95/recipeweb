@@ -67,7 +67,9 @@ button:focus-visible {
 #app {
   text-align: center;
 }
-
+p {
+  @apply flex mt-5
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

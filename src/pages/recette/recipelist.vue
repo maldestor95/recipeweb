@@ -1,14 +1,16 @@
 <template>
   <div>
-
     <div class="flex pb-4 pt-6">
       <div class="basis-3/12"></div>
+      <div class="flex gap-1 flex-1">
       <input
       v-model="recipeSelection"
       type="text"
-      class="border-2 border-blue-400 rounded-lg basis-10/12"
+      class="border-2 border-blue-400 rounded-lg basis-10/12 flex-1"
       id="recipeSelection"
       />
+      <keyIcons class="mt-1 hidden md:flex"></keyIcons>
+      </div>
       <div class="basis-3/12"></div>
     </div>
     <ul
@@ -27,7 +29,7 @@
 import { PropType, computed, onMounted, onUnmounted, ref, watch } from "vue";
 import { recipeListType } from "./methods";
 import ctrlK_Pressed from "../../helpers/ctrlk"
-
+import keyIcons from "../../components/keyIcons.vue"
 const recipeSelection = ref("");
 const hihglightedRecipeCounter=ref(0)
 
