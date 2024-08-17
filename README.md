@@ -4,6 +4,7 @@ This repository contains Recipes for maldestor95
 This pages displays recipes stored in another repository https://github.com/maldestor95/recipebook/tree/master/recipe  and provides a  basis search engine.
 
 # Revision
+* 1.1.0  add searching shortcut on desktop: CTRL+K
 * 1.0.0  search engine & display recipes
   * recipe must have a strict yml format described in https://github.com/maldestor95/recipebook/blob/master/readme.md
 
